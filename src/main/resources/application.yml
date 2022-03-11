@@ -1,0 +1,11 @@
+aes:
+    key: 1234567890ABCDEF1234567890ABCDEf
+    iv: 0123456789ABCDEF
+server:
+    port: 8090
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: root
+        url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
+        username: root
