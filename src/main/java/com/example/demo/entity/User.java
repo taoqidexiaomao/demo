@@ -4,7 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
-import com.example.demo.mybaitsPlus.AesTypeHandler;
+import com.example.demo.annotation.Encrypt;
+import com.example.demo.config.handler.AesTypeHandler;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

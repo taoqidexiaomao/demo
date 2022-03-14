@@ -2,4 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
 
+    <resultMap id="userMap" type="com.example.demo.entity.User">
+        <result column="name" property="name" typeHandler="com.example.demo.config.handler.AesTypeHandler" />
+    </resultMap>
+
+    <select id="queryList" resultMap="userMap">
+        select 0,1 from user where name = #{name,typeHandler=com.example.demo.config.handler.AesTypeHandler}
+    </select>
 </mapper>

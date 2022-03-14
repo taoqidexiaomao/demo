@@ -90,11 +90,14 @@ public class AESUtil {
             // byte key[] = generatorKey();
             // 密钥必须是16的倍数
             byte[] key = "1234567890ABCDEF1234567890ABCDEf".getBytes(StandardCharsets.UTF_8);//hexStringToBytes("0123456789ABCDEF");
-            String src = "werty7890";
+            String src = "{\"age\":\"12\",\"name\":\"中华人民共和国\"}";
             System.out.println("密钥:"+byteToHexString(key));
             System.out.println("原字符串:"+src);
 
             String enc = byteToHexString(encrypt(src, key));
+            System.out.println();
+            String newStr= new String(AESUtil.decrypt(enc,"1234567890ABCDEF1234567890ABCDEf".getBytes()));
+            System.out.println(newStr+"--------------");
             System.out.println("加密："+enc);
             System.out.println("解密："+new String(decrypt(enc, key), StandardCharsets.UTF_8));
             System.out.println("解密："+new String(decrypt("bb35f3b8d343f2808f791eb64549f332de9ddd17eb4f42ca1fa1e0b1b04b1dc6ea16b02ddfc06502466c8241289be60949e9eda7eea8d31d44978d96faee04ee4d9b169b7b000c53694fbe8a08d36c1162cea85450f6e2734ad4bda6ab0c95d9", key), "utf-8"));

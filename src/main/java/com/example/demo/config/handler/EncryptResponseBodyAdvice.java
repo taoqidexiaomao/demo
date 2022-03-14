@@ -28,6 +28,6 @@ public class EncryptResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
         ObjectMapper objectMapper=new ObjectMapper();
-        return AESUtil.encrypt(objectMapper.writeValueAsString(o),aesKey.getBytes());
+        return AESUtil.byteToHexString(AESUtil.encrypt(objectMapper.writeValueAsString(o),aesKey.getBytes()));
     }
 }

@@ -61,10 +61,9 @@ public class DemoController {
      * @return
      */
     @PostMapping("encrypt")
-    @Encrypt
+    //@Encrypt
     public JsonResult encrypt(@RequestBody User user) {
-        List<User> list=new ArrayList<>();
-        list.add(user);
+        List<User> list=userService.queryList(user);
         return  ResultTool.success(list);
     }
 
