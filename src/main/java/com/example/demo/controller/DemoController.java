@@ -61,9 +61,10 @@ public class DemoController {
      * @return
      */
     @PostMapping("encrypt")
-    //@Encrypt
+    @Encrypt
     public JsonResult encrypt(@RequestBody User user) {
-        List<User> list=userService.queryList(user);
+        List<User> list=new ArrayList<>();
+        list.add(user);
         return  ResultTool.success(list);
     }
 
@@ -81,6 +82,16 @@ public class DemoController {
     public JsonResult<?> save(User user) {
         userService.save(user);
         return ResultTool.success(user);
+    }
+    /**
+     * 数据库加密解密
+     * @param user
+     * @return
+     */
+    @PostMapping("user")
+    public JsonResult user(@RequestBody User user) {
+        List<User> list=userService.queryList(user);
+        return  ResultTool.success(list);
     }
 }
 

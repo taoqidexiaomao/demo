@@ -30,11 +30,16 @@ public class User implements Serializable {
     @TableField(value = "name",typeHandler = AesTypeHandler.class)
     private String name;
 
-    @TableField(value = "age")
+    private String account;
+
+    private String password;
+
     private Integer age;
 
-    @TableField(value = "sex")
-    private Integer sex;
+    private String city;
 
+    private String createId;
+
+    private String createDept;
 
 }

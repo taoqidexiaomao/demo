@@ -9,3 +9,13 @@ spring:
         url: jdbc:p6spy:mysql://localhost:3306/test?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
         username: root
         password: root
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: 1000MB
+            max-request-size: 1000MB
+# Mybatis Mate 配置
+mybatis-mate:
+    cert:
+        grant: dGhpc0lzVGVzdExpY2Vuc2Uj5byg5LiJ
+        license: bGVwxDOPMZMe5CJ2F8Wk0rXTBEu2dxtf606xLkujp4Iasu3RZbAPMiSHcoZsLJgBsgYmRSTeftIjBeHMwMGl+H5AUapa2AHfIFB/6WMHJsfTKETwnew5Wmhg/YRJnzCz4RxV4omJQ1Y35xdaLRmu0+eQjLFP8pjus1GrJq+h6CfP5VZJGzWYVaUfl6Z79+9mIiv5n9iDDvyL9us91NU5kkIr+Th8K/dzmsc/FtOMCT0+2wgL/tdZsC3Vt7jVsk9+9HaQYIFWrLEyB0yVAiwu3UKeZQ8Uc3AjMldzbozCuu8BmPAMrT5tIpACTuISfIXiI8lJIIEC2TqiEvCdyZf9sg==

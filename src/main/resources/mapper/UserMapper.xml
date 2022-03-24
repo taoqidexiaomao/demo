@@ -6,7 +6,8 @@
         <result column="name" property="name" typeHandler="com.example.demo.config.handler.AesTypeHandler" />
     </resultMap>
 
-    <select id="queryList" resultMap="userMap">
-        select 0,1 from user where name = #{name,typeHandler=com.example.demo.config.handler.AesTypeHandler}
+    <select id="queryList" resultType="com.example.demo.entity.User">
+        select * from user u where name = #{user.name,typeHandler=com.example.demo.config.handler.AesTypeHandler}
     </select>
+    <select id="test" resultType="com.example.demo.entity.User"></select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.IUserService;
@@ -24,6 +26,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public List<User> queryList(User user) {
-        return userMapper.queryList(user);
+        IPage<User> page = new Page<>(0, 10);
+        IPage<User> pages=userMapper.queryList(page,user);
+        List<User> list= userMapper.queryList(user);
+        return pages.getRecords();
     }
 }
