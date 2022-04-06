@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DataScope {
 
-    // 权限的类型
+    // 权限类型
     String type() default "";
 
     // 限制的字段
