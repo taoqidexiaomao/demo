@@ -15,7 +15,7 @@ public @interface DataScope {
     // 权限类型
     String type() default "";
 
-    // 限制的字段
+    // 限制字段
     String column() default "";
 
 }
