@@ -28,7 +28,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public List<User> queryList(User user) {
         IPage<User> page = new Page<>(0, 10);
         IPage<User> pages=userMapper.queryList(page,user);
-        List<User> list= userMapper.queryList(user);
+        String id="1";
+        String name="张三";
+        List<User> list= userMapper.ListTwo(id,name);
         return pages.getRecords();
     }
 }

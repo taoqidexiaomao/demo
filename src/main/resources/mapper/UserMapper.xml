@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
-
     <resultMap id="userMap" type="com.example.demo.entity.User">
         <result column="name" property="name" typeHandler="com.example.demo.config.handler.AesTypeHandler" />
     </resultMap>
@@ -9,5 +8,4 @@
     <select id="queryList" resultType="com.example.demo.entity.User">
         select * from user u where name = #{user.name,typeHandler=com.example.demo.config.handler.AesTypeHandler}
     </select>
-    <select id="test" resultType="com.example.demo.entity.User"></select>
 </mapper>

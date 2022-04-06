@@ -1,11 +1,13 @@
 package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.annotation.DataScope;
 import com.example.demo.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -25,10 +27,11 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
 
     @DataScope(type = "USER", column = "create_dept")
-    List<User> queryList(@Param("user") User user);
+    IPage<User> queryList(IPage<User> page, @Param("user") User user);
 /*    @DataScope(type = DataScopeConfig.TEST, value = {
             @DataColumn(alias = "u", name = "age")
     })*/
     @DataScope(type = "USER", column = "create_dept")
-    IPage<User> queryList(IPage<?> page,User user);
+    @Select("select * from user")
+    List<User> ListTwo(String id, String name);
 }

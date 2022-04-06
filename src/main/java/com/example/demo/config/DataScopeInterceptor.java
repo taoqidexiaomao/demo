@@ -38,36 +38,16 @@ public class DataScopeInterceptor implements Interceptor {
      */
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
-        System.out.println("====intercept======");
-
+        log.info("====intercept======");
         Object[] args = invocation.getArgs();
         MappedStatement mappedStatement = (MappedStatement) args[0];
-        Object parameter = args[1];
-        RowBounds rowBounds = (RowBounds) args[2];
-        ResultHandler resultHandler = (ResultHandler) args[3];
-        Executor executor = (Executor) invocation.getTarget();
-        CacheKey cacheKey;
-        BoundSql boundSql;
-
-
-        //由于逻辑关系，只会进入一次
-        if (args.length == 4) {
-            //4 个参数时
-            boundSql = mappedStatement.getBoundSql(parameter);
-            cacheKey = executor.createCacheKey(mappedStatement, parameter, rowBounds, boundSql);
-        } else {
-            //6 个参数时
-            cacheKey = (CacheKey) args[4];
-            boundSql = (BoundSql) args[5];
-        }
-
         //id为执行的mapper方法的全路径名，如com.metro.dao.UserMapper.insertUser
         String methodId = mappedStatement.getId();
-        // 5.获取Mapper的Class名称
+        // 获取Mapper的Class名称
         String clazzName = methodId.substring(0, methodId.lastIndexOf("."));
-        // 6.获取拦截的方法名
+        // 获取拦截的方法名
         String methodName = methodId.substring(methodId.lastIndexOf(".") + 1);
-        // 7.反射获取方法上的注解内容
+        // 反射获取方法上的注解内容
         Method[] methods = Class.forName(clazzName).getDeclaredMethods();
         DataScope dataScope = null;
         for (Method md : methods) {
@@ -82,6 +62,22 @@ public class DataScopeInterceptor implements Interceptor {
         String column = dataScope.column();
         if (StringUtils.isAnyEmpty(type, column)) {
             return invocation.proceed();
+        }
+        Object parameter = args[1];
+        RowBounds rowBounds = (RowBounds) args[2];
+        ResultHandler resultHandler = (ResultHandler) args[3];
+        Executor executor = (Executor) invocation.getTarget();
+        CacheKey cacheKey;
+        BoundSql boundSql;
+        //由于逻辑关系，只会进入一次
+        if (args.length == 4) {
+            //4 个参数时
+            boundSql = mappedStatement.getBoundSql(parameter);
+            cacheKey = executor.createCacheKey(mappedStatement, parameter, rowBounds, boundSql);
+        } else {
+            //6 个参数时
+            cacheKey = (CacheKey) args[4];
+            boundSql = (BoundSql) args[5];
         }
         //获取到原始sql语句
         String sql = boundSql.getSql();
