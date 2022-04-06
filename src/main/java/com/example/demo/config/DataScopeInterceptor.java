@@ -38,7 +38,7 @@ public class DataScopeInterceptor implements Interceptor {
      */
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
-        log.info("====intercept====== ");
+        log.info(" ====intercept====== ");
         Object[] args = invocation.getArgs();
         MappedStatement mappedStatement = (MappedStatement) args[0];
         //id为执行的mapper方法的全路径名，如com.metro.dao.UserMapper.insertUser
