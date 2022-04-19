@@ -38,6 +38,7 @@ public class DataScopeInterceptor implements Interceptor {
      */
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
+        //sadda
         log.info("====intercept======");
         Object[] args = invocation.getArgs();
         MappedStatement mappedStatement = (MappedStatement) args[0];
