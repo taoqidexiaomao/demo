@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 @MapperScan("com.example.demo.mapper")
 public class DemoApplication {
-
+    //ss
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
